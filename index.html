@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fuego Squad | Fan page de Free Fire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="logo" href="#inicio">🔥 Fuego Squad</a>
+    <nav class="nav"><a href="#ob55">Novedades OB55</a><a href="#personajes">Personajes</a><a href="#entrena">Entrena</a><a href="#armeria">Armas 3D</a><a href="#dolar">Dólar</a></nav>
+    <form id="profile" novalidate>
+      <input type="text" id="nick" maxlength="12" placeholder="Tu apodo (3-12)" aria-label="Tu apodo" autocomplete="off">
+      <input type="color" id="color" value="#ff5a1f" aria-label="Color de tu equipo">
+      <button class="btn" type="submit">Guardar perfil</button>
+    </form>
+    <p id="msg" role="status"></p>
+  </header>
+
+  <main>
+    <section id="inicio">
+      <h1>Bienvenido a Bermuda, <span id="name">Sobreviviente</span></h1>
+      <p class="lead">Todo sobre la última actualización de Free Fire, los personajes, las armas en 3D y el precio del dólar.</p>
+      <a class="banner" href="https://ff.garena.com/en/article/1712/" target="_blank" rel="noopener">
+        <span class="badge">ÚLTIMA ACTUALIZACIÓN</span>
+        <strong>OB55 · Naruto Shippuden, 4 armas nuevas y rework de Kenta</strong>
+        <small>Notas oficiales publicadas el 10 de septiembre de 2026. Toca para leerlas completas.</small>
+      </a>
+    </section>
+
+    <section id="ob55">
+      <h2>Novedades de OB55</h2>
+      <p class="lead">Toca una tarjeta para ver los detalles.</p>
+      <div class="tiles" id="obTiles"></div>
+      <dialog id="obDialog" aria-labelledby="obTitle">
+        <div class="dlg-head"><h3 id="obTitle"></h3><button type="button" class="x" id="obClose" aria-label="Cerrar">✕</button></div>
+        <div id="obBody"></div>
+        <div class="dlg-nav"><button type="button" class="btn" id="obPrev">← Anterior</button><span id="obPos"></span><button type="button" class="btn" id="obNext">Siguiente →</button></div>
+      </dialog>
+    </section>
+
+    <section id="personajes">
+      <h2>Personajes</h2>
+      <p class="lead">Pasa el cursor o toca una carta para ver su habilidad. Las marcadas con OB55 cambiaron en la última actualización.</p>
+      <input type="search" id="search" class="search" placeholder="Buscar personaje..." aria-label="Buscar personaje" autocomplete="off">
+      <div class="zones" id="roles"></div>
+      <p class="combo" id="count"></p>
+      <div class="grid" id="chars"></div>
+      <p class="lead">Faltan personajes nuevos o habilidades que cambian cada parche: revisa la <a href="https://ff.garena.com/es/chars/" target="_blank" rel="noopener">lista oficial</a>.</p>
+    </section>
+
+    <section id="entrena">
+      <h2>Entrena tu puntería</h2>
+      <div class="stats">
+        <div>Tiempo <strong id="time">20</strong></div>
+        <div>Blancos <strong id="score">0</strong></div>
+        <div>Récord <strong id="best">0</strong></div>
+        <button class="btn" id="start" type="button">Empezar (Espacio)</button>
+      </div>
+      <div class="arena" id="arena">
+        <p id="arenaMsg">Toca los blancos lo más rápido que puedas durante 20 segundos.</p>
+      </div>
+    </section>
+
+<section id="equipo">
+      <h2>Arma tu equipo</h2>
+      <p class="lead">Arrastra un arma a un espacio, o toca el arma, o pulsa las teclas 1 a 6. Toca un espacio para vaciarlo.</p>
+      <div class="armory">
+        <div class="guns" id="guns"></div>
+        <div>
+          <div class="slots">
+            <button type="button" class="slot" data-slot="0" aria-label="Espacio principal"></button>
+            <button type="button" class="slot" data-slot="1" aria-label="Espacio secundario"></button>
+          </div>
+          <p id="combo" class="combo"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="armeria">
+      <h2>Armería 3D</h2>
+      <p class="lead">Arrastra para girar, usa la rueda o pellizca para acercar. Elige un arma abajo.</p>
+      <div class="viewer" id="viewer"><span class="hint">Cargando visor 3D...</span></div>
+      <p class="winfo" id="winfo"></p>
+      <div class="viewer-bar">
+        <div class="zones" id="models"></div>
+        <button class="btn" id="spin" type="button">Pausar giro</button>
+        <button class="btn" id="reset" type="button">Restablecer vista</button>
+        <button class="btn" id="equipBtn" type="button" hidden>Equipar esta arma</button>
+      </div>
+    </section>
+
+    <section id="dolar">
+      <h2>Precio del dólar</h2>
+      <p class="lead">Datos en vivo de una API gratuita de tipos de cambio. Elige una moneda y escribe cuántos dólares quieres convertir.</p>
+      <div class="zones" id="coins"></div>
+      <label class="usd">Dólares (USD) <input type="number" id="usd" min="0.01" step="any" value="1"></label>
+      <div class="weather" id="rate" aria-live="polite">Elige una moneda para ver el precio del dólar.</div>
+    </section>
+  </main>
+
+  <footer>Proyecto escolar de fans. Datos: notas oficiales OB55 de Garena y listas públicas de personajes. Free Fire es una marca de Garena; esta página no es oficial. <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener">Rates By Exchange Rate API</a> y <a href="https://mindicador.cl" target="_blank" rel="noopener">mindicador.cl</a> (Banco Central de Chile).</footer>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/fflate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="models.js"></script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
